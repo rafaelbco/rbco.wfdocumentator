@@ -1,0 +1,72 @@
+<html tal:define="wf view/wf_description;">
+
+<head>
+
+<title tal:content="wf/title">Workflow Title</title>
+
+<style type="text/css">
+table {
+    border-collapse: collapse;
+}
+
+table, tr, td, th {
+    border-width:1px; 
+    border-style:solid; 
+    border-color: black;
+    text-align: center;
+    padding: 4px;   
+}
+</style>
+
+</head>
+
+<body tal:define="roles view/role_ids;
+                  permissions view/permission_ids;">                                    
+
+<h1 tal:content="wf/title">Workflow Title</h1>
+
+<img src="" alt="Workflow" tal:attributes="src string:@@wf-graph"/>
+
+<h2>States</h2>
+
+<tal:block repeat="state wf/states">
+    <h3 tal:content="state/title">State Title</h3>
+    <p tal:content="state/description">State description.</p>
+    
+	<table>
+	    <thead>	        
+	        <tr>
+	           <th />
+	           <th tal:repeat="role roles" tal:content="role">
+	               Role
+	           </th>
+	        </tr>
+	    </thead>
+	    
+	    <tr tal:repeat="permission permissions">
+	       <th tal:content="permission">Permission</th>
+	       <td tal:repeat="role roles" 
+	           tal:content="python: (state.role_has_permission(role, permission) and 'X') or ''">
+	           Has role ?
+	       </td>
+	    </tr>
+	</table>    
+    
+</tal:block>
+
+<h2>Transitions</h2>
+
+<tal:block repeat="transition wf/transitions">
+    <h3 tal:content="transition/title">Transition Title</h3>
+    <p tal:content="transition/description">Transition description.</p>
+    <div tal:content="structure transition/guard_summary">Gurads summary.</div>    
+    
+</tal:block>
+
+
+
+    
+    
+ 
+</body>
+</html>

@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    i18n_domain="prdg.ploneio">       
+    
+    <browser:page
+        name="wf-graph"
+        for="Products.DCWorkflow.interfaces.IDCWorkflowDefinition"
+        class=".views.WFGraphView"
+        permission="zope2.View"
+    />    
+    
+    <browser:page
+        name="wf-doc"
+        for="Products.DCWorkflow.interfaces.IDCWorkflowDefinition"
+        class=".views.WFDocView"
+        permission="zope2.View"
+        template="wfdoc.pt"
+    />        
+        
+</configure>

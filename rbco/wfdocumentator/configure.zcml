@@ -1,0 +1,42 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="rbco.wfdocumentator">
+    
+    <include package=".browser" />
+    
+    <adapter
+        for="OFS.interfaces.ISimpleItem"
+        provides=".interfaces.IWFElementDescription"
+        factory=".wfdesc.ItemToWFElementDesc"        
+    />    
+    
+    <adapter
+        for="Products.DCWorkflow.interfaces.IDCWorkflowDefinition"
+        provides=".interfaces.IWFDescription"
+        factory=".wfdesc.DCWFDefToWFDesc"        
+    />    
+    
+    <!-- There aren't interfaces declared for StateDescription and -->
+    <!-- TransitionDescription, so we use ISimpleItem. -->
+    
+    <adapter
+        for="OFS.interfaces.ISimpleItem"
+        provides=".interfaces.IStateDescription"
+        factory=".wfdesc.StateDefToStateDesc"        
+    />    
+    
+    <adapter
+        for="OFS.interfaces.ISimpleItem"
+        provides=".interfaces.ITransitionDescription"
+        factory=".wfdesc.TransitionDefToTransitionDesc"        
+    />      
+
+    <adapter
+        for=".interfaces.IWFDescription"
+        provides=".interfaces.IWFGraph"
+        factory=".wfgraph.WFDescToWFGraph"        
+    />      
+
+
+</configure>
