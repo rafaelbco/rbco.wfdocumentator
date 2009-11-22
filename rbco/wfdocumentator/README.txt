@@ -83,6 +83,12 @@ History
 
 - Added "acquired" column to @@wf-doc.
 
+0.0.3 (22-november-2009)
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Corrected packaging error: README.txt was not included in the released 
+  tarball :-(.
+
 Credits
 -------
 
@@ -95,6 +101,11 @@ Contribute and report bugs
 --------------------------
 
 Help is welcome. Contact the author or file a ticket at the `Issue tracker`_.
+
+Thanks
+------
+
+- To lucmult, for reporting the bug #2 (the one fixed in 0.0.3).
 
 References
 ----------
