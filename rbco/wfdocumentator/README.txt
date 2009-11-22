@@ -78,6 +78,11 @@ History
 
 - First release.
 
+0.0.2 (22-november-2009)
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+- Added "acquired" column to @@wf-doc.
+
 Credits
 -------
 
