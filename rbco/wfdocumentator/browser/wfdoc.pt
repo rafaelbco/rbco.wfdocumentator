@@ -37,6 +37,7 @@ table, tr, td, th {
 	    <thead>	        
 	        <tr>
 	           <th />
+               <th>Acquired ?</th>
 	           <th tal:repeat="role roles" tal:content="role">
 	               Role
 	           </th>
@@ -45,6 +46,7 @@ table, tr, td, th {
 	    
 	    <tr tal:repeat="permission permissions">
 	       <th tal:content="permission">Permission</th>
+	       <td tal:content="python: (state.acquired(permission) and 'X') or ''">Is acquired ?</td>	       
 	       <td tal:repeat="role roles" 
 	           tal:content="python: (state.role_has_permission(role, permission) and 'X') or ''">
 	           Has role ?

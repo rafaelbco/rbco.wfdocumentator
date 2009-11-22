@@ -59,6 +59,9 @@ class IStateDescription(IWFChildElementDescription):
     def is_initial_state():
         """Return: boolean."""
     
+    def acquired(permission_id):
+        """Are permission settings for the given permission acquired ?"""
+    
 class ITransitionDescription(IWFChildElementDescription):
     
     dest_state_id = Attribute(u'ID of the destination state.')

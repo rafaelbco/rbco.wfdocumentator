@@ -109,6 +109,9 @@ class StateDefToStateDesc(ItemToWFChildElementDesc):
     def is_initial_state(self):
         return self.id == self.wf_description.initial_state_id
     
+    def acquired(self, permission_id):
+        return self.obj.getPermissionInfo(permission_id)['acquired']
+    
 class TransitionDefToTransitionDesc(ItemToWFChildElementDesc):
     implements(ITransitionDescription)
     
