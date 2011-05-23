@@ -70,25 +70,6 @@ To-do
 
 - Write automatic tests.
 
-History
--------
-
-0.0.1 (03-june-2009)
-~~~~~~~~~~~~~~~~~~~~
-
-- First release.
-
-0.0.2 (22-november-2009)
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-- Added "acquired" column to @@wf-doc.
-
-0.0.3 (22-november-2009)
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-- Corrected packaging error: README.txt was not included in the released 
-  tarball :-(.
-
 Credits
 -------
 
@@ -109,8 +90,6 @@ Thanks
 
 References
 ----------
-
-.. target-notes::
 
 .. _Graphviz: http://www.graphviz.org/
 .. _collective.wtf: http://pypi.python.org/pypi/collective.wtf/
