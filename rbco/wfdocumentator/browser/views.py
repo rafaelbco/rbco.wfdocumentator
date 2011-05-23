@@ -3,8 +3,6 @@ from StringIO import StringIO
 from Products.Five.browser import BrowserView
 from rbco.wfdocumentator.interfaces import IWFDescription, IWFGraph
 
-
-
 # TODO: create automatic tests.
 
 class WFBaseView(BrowserView):

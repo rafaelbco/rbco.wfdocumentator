@@ -17,5 +17,7 @@
         permission="zope2.View"
         template="wfdoc.pt"
     />        
+    
+    
         
 </configure>

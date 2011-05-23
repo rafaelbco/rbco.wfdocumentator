@@ -88,8 +88,8 @@ Thanks
 
 - To lucmult, for reporting the bug #2 (the one fixed in 0.0.3).
 
-References
-----------
+.. References
+   ----------
 
 .. _Graphviz: http://www.graphviz.org/
 .. _collective.wtf: http://pypi.python.org/pypi/collective.wtf/

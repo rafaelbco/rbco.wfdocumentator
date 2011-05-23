@@ -31,7 +31,7 @@ table, tr, td, th {
 
 <img src="" alt="Workflow" tal:attributes="src string:@@wf-graph"/>
 
-<h2 i18n:translate="">States</h2>
+<h2 i18n:domain="rbco.wfdocumentator" i18n:translate="">States</h2>
 
 <tal:block repeat="state wf/states">
     <h3 tal:content="state/title" i18n:translate="">State Title</h3>
@@ -60,7 +60,7 @@ table, tr, td, th {
     
 </tal:block>
 
-<h2>Transitions</h2>
+<h2 i18n:translate="" i18n:domain="rbco.wfdocumentator">Transitions</h2>
 
 <tal:block repeat="transition wf/transitions">
     <h3 tal:content="transition/title" i18n:translate="">Transition Title</h3>
@@ -69,10 +69,5 @@ table, tr, td, th {
     
 </tal:block>
 
-
-
-    
-    
- 
 </body>
 </html>

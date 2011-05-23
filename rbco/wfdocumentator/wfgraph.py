@@ -1,10 +1,9 @@
+from zope.i18n import translate
 from StringIO import StringIO
-
-from zope.interface import implements
-from interfaces import (IWFGraph, IWFDescription)
-
-import rbco.commandwrap.decorators as cmdwrap
+from interfaces import IWFGraph, IWFDescription
 from prdg.util.file import process_str_as_file_out
+from zope.interface import implements
+import rbco.commandwrap.decorators as cmdwrap
 
 @cmdwrap.retain_only_output
 @cmdwrap.check_status
@@ -23,31 +22,35 @@ class WFDescToWFGraph(object):
     
     def __init__(self, wf_desc):
         self.wf_desc = wf_desc
+        self.request = self.wf_desc.obj.REQUEST
+    
+    def _(self, text):
+        return translate(text, domain='plone', context=self.request)
     
     def render(self, format='png'):
         wf = self.wf_desc
         out = StringIO()
         
-        print >> out, 'digraph {'
+        print >> out, u'digraph {'
         
         for s in wf.states:
             if s.is_initial_state:
-                attrs = '[color=grey, style = filled]'
+                attrs = u'[color=grey, style = filled]'
             else:
-                attrs = ''
-                
-            print >> out, '"%s" %s;' % (s.title, attrs)
+                attrs = u''
+            
+            print >> out, u'"%s" %s;' % (self._(s.title), attrs)
         
         for s in wf.states:
             for t in s.transitions:              
                 print >> out, (
-                    '"%s" -> "%s" [label="%s"];' 
-                    % (s.title, t.dest_state.title, t.title)
+                    u'"%s" -> "%s" [label="%s"];' 
+                    % (self._(s.title), self._(t.dest_state.title), self._(t.title))
                 )
 
-        print >> out, '}'        
+        print >> out, u'}'        
         
-        graph_desc = out.getvalue()
+        graph_desc = out.getvalue().encode('utf8')
         
         if format == 'dot':
             return graph_desc
