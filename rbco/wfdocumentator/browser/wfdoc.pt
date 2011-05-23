@@ -31,7 +31,11 @@ table, tr, td, th {
 
 <img src="" alt="Workflow" tal:attributes="src string:@@wf-graph"/>
 
-<h2 i18n:domain="rbco.wfdocumentator" i18n:translate="">States</h2>
+<p tal:replace="structure view/formatted_wf_description">
+    Description.
+</p>
+
+<h2 i18n:translate="">States</h2>
 
 <tal:block repeat="state wf/states">
     <h3 tal:content="state/title" i18n:translate="">State Title</h3>
@@ -60,13 +64,46 @@ table, tr, td, th {
     
 </tal:block>
 
-<h2 i18n:translate="" i18n:domain="rbco.wfdocumentator">Transitions</h2>
+<h2 i18n:translate="">Transitions</h2>
 
 <tal:block repeat="transition wf/transitions">
     <h3 tal:content="transition/title" i18n:translate="">Transition Title</h3>
     <p tal:content="transition/description" i18n:translate="">Transition description.</p>
-    <div tal:content="structure transition/guard_summary" i18n:translate="">Guards summary.</div>    
     
+    <div tal:condition="transition/guard_permissions">
+        <span i18n:translate="">Requires permissions</span>:
+    
+	    <ul>
+	        <tal:block repeat="guard_permission transition/guard_permissions">
+	            <li tal:content="guard_permission" i18n:translate="">Guard permission.</li>
+	        </tal:block>        
+	    </ul>    
+    </div>    
+    
+    <div tal:condition="transition/guard_roles">
+        <span i18n:translate="">Requires roles</span>:    
+        <ul>
+            <tal:block repeat="guard_role transition/guard_roles">
+                <li tal:content="guard_role" i18n:translate="">Guard role.</li>
+            </tal:block>        
+        </ul>    
+    </div>    
+
+    <div tal:condition="transition/guard_groups">
+        <span i18n:translate="">Requires groups</span>:    
+        <ul>
+            <tal:block repeat="guard_group transition/guard_groups">
+                <li tal:content="guard_group" i18n:translate="">Guard group.</li>
+            </tal:block>        
+        </ul>    
+    </div>
+    
+     
+    <div tal:condition="transition/guard_expression">
+        <span i18n:translate="">Guard expression</span>:
+        <code tal:content="transition/guard_expression">Guard expr.</code>
+    </div>    
+     
 </tal:block>
 
 </body>

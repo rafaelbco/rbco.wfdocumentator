@@ -129,7 +129,22 @@ class TransitionDefToTransitionDesc(ItemToWFChildElementDesc):
         return self.wf_description.state(self.dest_state_id)
          
     @property
-    def guard_summary(self):
-        return self.obj.getGuardSummary()
-    
+    def guard_permissions(self):
+        return getattr(self._guard, 'permissions', [])
+
+    @property
+    def guard_roles(self):
+        return getattr(self._guard, 'roles', [])
+
+    @property
+    def guard_groups(self):
+        return getattr(self._guard, 'groups', [])
+
+    @property
+    def guard_expression(self):
+        return getattr(getattr(self._guard, 'expr', None), 'text', None)
+        
+    @property
+    def _guard(self):
+        return getattr(self.obj, 'guard', None)
    

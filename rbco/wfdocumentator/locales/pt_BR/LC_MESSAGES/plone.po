@@ -1,0 +1,41 @@
+msgid "States"
+msgstr "Estados"
+
+msgid "Transitions"
+msgstr "Transições"
+
+msgid "Modify portal content"
+msgstr "Modificar conteúdo"
+
+msgid "Access contents information"
+msgstr "Acessar informação sobre conteúdo"
+
+msgid "Change portal events"
+msgstr "Alterar eventos"
+
+msgid "Anonymous"
+msgstr "Anônimo"
+
+msgid "Authenticated"
+msgstr "Autenticado"
+
+msgid "Acquired ?"
+msgstr "Herda ?"
+
+msgid "Requires permissions"
+msgstr "Exige permissão"
+
+msgid "Requires roles"
+msgstr "Exige papéis"
+
+msgid "Requires groups"
+msgstr "Exige grupos"
+
+msgid "Guard expression"
+msgstr "Expressão de guarda"
+
+msgid "Review portal content"
+msgstr "Revisar conteúdo"
+    
+msgid "Request review"
+msgstr "Solicitar revisão"    

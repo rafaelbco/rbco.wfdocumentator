@@ -1,7 +1,8 @@
-from StringIO import StringIO
-
 from Products.Five.browser import BrowserView
+from StringIO import StringIO
 from rbco.wfdocumentator.interfaces import IWFDescription, IWFGraph
+from zope.i18n import translate
+
 
 # TODO: create automatic tests.
 
@@ -56,3 +57,13 @@ class WFDocView(WFBaseView):
             p for p in self.wf_description().permission_ids 
             if p.lower() not in self.hide_permissions()
         ]        
+    
+    def formatted_wf_description(self):
+        translated = translate(
+            self.wf_description().description.strip(), 
+            domain='plone', 
+            context=self.request
+        )
+        lines = [l.strip() for l in translated.split('- ')]
+        lis = ['<li>%s</li>' % l for l in lines if l]
+        return '<ul>\n' + '\n'.join(lis) + '</ul>'

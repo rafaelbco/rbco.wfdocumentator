@@ -67,7 +67,10 @@ class ITransitionDescription(IWFChildElementDescription):
     dest_state_id = Attribute(u'ID of the destination state.')
     dest_state = Attribute(u'IStateDescription.')
     
-    guard_summary = Attribute(u'String describing the guards.')
+    guard_permissions = Attribute(u'Sequence of permissions IDs.')
+    guard_roles = Attribute(u'Sequence of roles IDs.')
+    guard_groups = Attribute(u'Sequence of group IDs.')
+    guard_expression = Attribute(u'Guard expression.')
     
 class IWFGraph(Interface):
     

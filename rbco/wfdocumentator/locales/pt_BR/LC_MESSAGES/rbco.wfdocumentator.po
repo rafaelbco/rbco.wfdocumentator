@@ -1,5 +1,0 @@
-msgid "States"
-msgstr "Estados"
-
-msgid "Transitions"
-msgstr "Transições"
