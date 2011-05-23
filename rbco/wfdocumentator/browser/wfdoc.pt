@@ -1,4 +1,8 @@
-<html tal:define="wf view/wf_description;">
+<html 
+    xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+    i18n:domain="plone"
+    tal:define="wf view/wf_description;">
 
 <head>
 
@@ -23,29 +27,29 @@ table, tr, td, th {
 <body tal:define="roles view/role_ids;
                   permissions view/permission_ids;">                                    
 
-<h1 tal:content="wf/title">Workflow Title</h1>
+<h1 tal:content="wf/title" i18n:translate="">Workflow Title</h1>
 
 <img src="" alt="Workflow" tal:attributes="src string:@@wf-graph"/>
 
-<h2>States</h2>
+<h2 i18n:translate="">States</h2>
 
 <tal:block repeat="state wf/states">
-    <h3 tal:content="state/title">State Title</h3>
-    <p tal:content="state/description">State description.</p>
+    <h3 tal:content="state/title" i18n:translate="">State Title</h3>
+    <p tal:content="state/description" i18n:translate="">State description.</p>
     
 	<table>
 	    <thead>	        
 	        <tr>
 	           <th />
-               <th>Acquired ?</th>
-	           <th tal:repeat="role roles" tal:content="role">
+               <th i18n:translate="">Acquired ?</th>
+	           <th tal:repeat="role roles" tal:content="role" i18n:translate="">
 	               Role
 	           </th>
 	        </tr>
 	    </thead>
 	    
 	    <tr tal:repeat="permission permissions">
-	       <th tal:content="permission">Permission</th>
+	       <th tal:content="permission" i18n:translate="">Permission</th>
 	       <td tal:content="python: (state.acquired(permission) and 'X') or ''">Is acquired ?</td>	       
 	       <td tal:repeat="role roles" 
 	           tal:content="python: (state.role_has_permission(role, permission) and 'X') or ''">
@@ -59,9 +63,9 @@ table, tr, td, th {
 <h2>Transitions</h2>
 
 <tal:block repeat="transition wf/transitions">
-    <h3 tal:content="transition/title">Transition Title</h3>
-    <p tal:content="transition/description">Transition description.</p>
-    <div tal:content="structure transition/guard_summary">Gurads summary.</div>    
+    <h3 tal:content="transition/title" i18n:translate="">Transition Title</h3>
+    <p tal:content="transition/description" i18n:translate="">Transition description.</p>
+    <div tal:content="structure transition/guard_summary" i18n:translate="">Guards summary.</div>    
     
 </tal:block>
 
