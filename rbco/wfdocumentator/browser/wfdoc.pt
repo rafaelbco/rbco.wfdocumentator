@@ -61,7 +61,14 @@
     
 	    <ul>
 	        <tal:block repeat="guard_permission transition/guard_permissions">
-	            <li tal:content="guard_permission" i18n:translate="">Guard permission.</li>
+	            <li>
+	               <span tal:replace="guard_permission" i18n:translate="">
+	                   Guard permission.
+	               </span>
+	               <br/>
+	               <span i18n:translate="">Roles</span>:
+	               <span tal:replace="python:view.roles_of_permission(guard_permission)">Roles for permission.</span>	               
+	            </li>
 	        </tal:block>        
 	    </ul>    
     </div>    

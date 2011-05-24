@@ -2,6 +2,7 @@ from Products.Five.browser import BrowserView
 from StringIO import StringIO
 from rbco.wfdocumentator.interfaces import IWFDescription, IWFGraph
 from rbco.wfdocumentator.util import translate as _
+from Products.CMFCore.utils import getToolByName
 
 
 # TODO: create automatic tests.
@@ -32,8 +33,7 @@ class WFDocView(WFBaseView):
     hide_roles=Anonymous.Authenticated
     &hide_permissions=Access+contents+information.List+folder+contents
     """
-    
-    
+        
     def parse_seq_arg(self, arg):
         return [
             a.lower().strip()
@@ -63,3 +63,18 @@ class WFDocView(WFBaseView):
         lines = [l.strip() for l in translated.split('- ')]
         lis = ['<li>%s</li>' % l for l in lines if l]
         return '<ul>\n' + '\n'.join(lis) + '</ul>'
+    
+
+    
+    def roles_of_permission(self, permission):
+        portal = getToolByName(self.context, 'portal_url').getPortalObject()
+        
+        roles = set(
+            r['name'] 
+            for r in portal.rolesOfPermission(permission) 
+            if r['selected']
+        )
+        roles &= set(self.role_ids())
+                
+        return u', '.join(_(r) for r in roles)
+
