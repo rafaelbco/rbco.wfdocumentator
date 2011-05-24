@@ -1,31 +1,17 @@
 <html 
     xmlns="http://www.w3.org/1999/xhtml"
     xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="plone"
-    tal:define="wf view/wf_description;">
+    i18n:domain="plone"    
+    metal:use-macro="context/main_template/macros/master">
 
-<head>
+<body>                                    
 
-<title tal:content="wf/title">Workflow Title</title>
+<metal:content fill-slot="content"
+    tal:define="roles view/role_ids;
+                permissions view/permission_ids;
+                wf view/wf_description;">
 
-<style type="text/css">
-table {
-    border-collapse: collapse;
-}
-
-table, tr, td, th {
-    border-width:1px; 
-    border-style:solid; 
-    border-color: black;
-    text-align: center;
-    padding: 4px;   
-}
-</style>
-
-</head>
-
-<body tal:define="roles view/role_ids;
-                  permissions view/permission_ids;">                                    
+<div id="content">
 
 <h1 tal:content="wf/title" i18n:translate="">Workflow Title</h1>
 
@@ -41,7 +27,7 @@ table, tr, td, th {
     <h3 tal:content="state/title" i18n:translate="">State Title</h3>
     <p tal:content="state/description" i18n:translate="">State description.</p>
     
-	<table>
+	<table class="plain">
 	    <thead>	        
 	        <tr>
 	           <th />
@@ -105,6 +91,10 @@ table, tr, td, th {
     </div>    
      
 </tal:block>
+
+</div>
+
+</metal:content>
 
 </body>
 </html>
