@@ -1,4 +1,4 @@
-from zope.i18n import translate
+from rbco.wfdocumentator.util import translate as _
 from StringIO import StringIO
 from interfaces import IWFGraph, IWFDescription
 from prdg.util.file import process_str_as_file_out
@@ -24,9 +24,6 @@ class WFDescToWFGraph(object):
         self.wf_desc = wf_desc
         self.request = self.wf_desc.obj.REQUEST
     
-    def _(self, text):
-        return translate(text, domain='plone', context=self.request)
-    
     def render(self, format='png'):
         wf = self.wf_desc
         out = StringIO()
@@ -39,13 +36,13 @@ class WFDescToWFGraph(object):
             else:
                 attrs = u''
             
-            print >> out, u'"%s" %s;' % (self._(s.title), attrs)
+            print >> out, u'"%s" %s;' % (_(s.title), attrs)
         
         for s in wf.states:
             for t in s.transitions:              
                 print >> out, (
                     u'"%s" -> "%s" [label="%s"];' 
-                    % (self._(s.title), self._(t.dest_state.title), self._(t.title))
+                    % (_(s.title), _(t.dest_state.title), _(t.title))
                 )
 
         print >> out, u'}'        

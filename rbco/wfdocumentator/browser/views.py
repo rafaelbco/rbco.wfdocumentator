@@ -1,7 +1,7 @@
 from Products.Five.browser import BrowserView
 from StringIO import StringIO
 from rbco.wfdocumentator.interfaces import IWFDescription, IWFGraph
-from zope.i18n import translate
+from rbco.wfdocumentator.util import translate as _
 
 
 # TODO: create automatic tests.
@@ -59,11 +59,7 @@ class WFDocView(WFBaseView):
         ]        
     
     def formatted_wf_description(self):
-        translated = translate(
-            self.wf_description().description.strip(), 
-            domain='plone', 
-            context=self.request
-        )
+        translated = _(self.wf_description().description.strip())
         lines = [l.strip() for l in translated.split('- ')]
         lis = ['<li>%s</li>' % l for l in lines if l]
         return '<ul>\n' + '\n'.join(lis) + '</ul>'
