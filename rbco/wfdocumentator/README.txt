@@ -17,6 +17,9 @@ Currently two Zope3-style views for
   
 - ``@@wf-doc``: Render an HTML page describing the workflow. This includes
   the graph mentioned above.  
+  
+- ``@@wf-doc-user-friendly``: Same as ``@@wf-doc`` but hides some roles and permissions and the
+  "acquire" column.
 
 Requirements
 ------------
@@ -55,6 +58,8 @@ You can pass the following parameters to @@wf-graph in the query string:
 in the output, separated by ".". Example:
 
 - http://localhost:8080/plone/portal_workflow/plone_workflow/@@wf-doc?hide_roles=Anonymous.Authenticated.Member&hide_permissions=Access+contents+information.List%20folder%20contents
+
+There's also the ``hide_acquire`` parameter, which hides the "acquired" column.
 
 To-do
 -----

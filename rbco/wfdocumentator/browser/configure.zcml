@@ -18,6 +18,12 @@
         template="wfdoc.pt"
     />        
     
-    
+    <browser:page
+        name="wf-doc-user-friendly"
+        for="Products.DCWorkflow.interfaces.IDCWorkflowDefinition"
+        class=".views.WFDocUserFriendlyView"
+        permission="zope2.View"
+        template="wfdoc.pt"
+    />
         
 </configure>

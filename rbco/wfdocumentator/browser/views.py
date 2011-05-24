@@ -4,9 +4,6 @@ from rbco.wfdocumentator.interfaces import IWFDescription, IWFGraph
 from rbco.wfdocumentator.util import translate as _
 from Products.CMFCore.utils import getToolByName
 
-
-# TODO: create automatic tests.
-
 class WFBaseView(BrowserView):
     
     def wf_description(self):
@@ -25,47 +22,48 @@ class WFGraphView(WFBaseView):
     
 class WFDocView(WFBaseView):
     """
-    Render an HTML page describing the workflow.
+    Render an HTML page describing the workflow.    
     
-    Accept "hide_roles" and "hide_permissions" in the request. The IDs of the
-    roles or permissions must be delimited by ".". Example of query string:
+    Accept the following parameters in the request:
+    - hide_roles: Sequence of role IDs to hide.
+    - hide_permissions: Sequence of permission IDs to hide.
+    - hide_acquire: Hide the "acquire" column.
     
+    Roles and permissions IDs are delimited by a dot.
+        
     hide_roles=Anonymous.Authenticated
     &hide_permissions=Access+contents+information.List+folder+contents
     """
         
     def parse_seq_arg(self, arg):
-        return [
-            a.lower().strip()
+        return set(
+            a.strip() 
             for a in self.request.get(arg, '').split('.')
-        ]
-    
+            if a.strip()
+        )
+
+    def hide_acquire(self):
+        return 'hide_acquire' in self.request    
+
+        
     def hide_roles(self):
         return self.parse_seq_arg('hide_roles')
     
     def hide_permissions(self):
-        return self.parse_seq_arg('hide_permissions')
+        return self.parse_seq_arg('hide_permissions')    
     
     def role_ids(self):
-        return [
-            r for r in self.wf_description().role_ids 
-            if r.lower() not in self.hide_roles()
-        ]
+        return set(self.wf_description().role_ids) - self.hide_roles() 
     
     def permission_ids(self):
-        return [
-            p for p in self.wf_description().permission_ids 
-            if p.lower() not in self.hide_permissions()
-        ]        
-    
+        return set(self.wf_description().permission_ids) - self.hide_permissions()
+            
     def formatted_wf_description(self):
         translated = _(self.wf_description().description.strip())
         lines = [l.strip() for l in translated.split('- ')]
         lis = ['<li>%s</li>' % l for l in lines if l]
         return '<ul>\n' + '\n'.join(lis) + '</ul>'
-    
 
-    
     def roles_of_permission(self, permission):
         portal = getToolByName(self.context, 'portal_url').getPortalObject()
         
@@ -78,3 +76,21 @@ class WFDocView(WFBaseView):
                 
         return u', '.join(_(r) for r in roles)
 
+HIDE_ROLES = set(['Reader', 'Authenticated', 'Contributor', 'Member', 'Editor'])
+HIDE_PERMISSIONS = set(['Change portal events', 'Access contents information'])
+
+class WFDocUserFriendlyView(WFDocView):
+    
+    def hide_acquire(self):
+        """Override: WFDocView"""
+        return True
+    
+    def hide_roles(self):
+        """Override: WFDocView"""
+        return WFDocView.hide_roles(self) | HIDE_ROLES
+    
+    def hide_permissions(self):
+        """Override: WFDocView"""
+        return WFDocView.hide_permissions(self) | HIDE_PERMISSIONS
+        
+        

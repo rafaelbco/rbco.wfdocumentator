@@ -30,8 +30,8 @@
 	<table class="plain">
 	    <thead>	        
 	        <tr>
-	           <th />
-               <th i18n:translate="">Acquired ?</th>
+	           <th></th>
+               <th i18n:translate="" tal:condition="not:view/hide_acquire">Acquired ?</th>
 	           <th tal:repeat="role roles" tal:content="role" i18n:translate="">
 	               Role
 	           </th>
@@ -40,7 +40,7 @@
 	    
 	    <tr tal:repeat="permission permissions">
 	       <th tal:content="permission" i18n:translate="">Permission</th>
-	       <td tal:content="python: (state.acquired(permission) and 'X') or ''">Is acquired ?</td>	       
+	       <td tal:condition="not:view/hide_acquire" tal:content="python: (state.acquired(permission) and 'X') or ''">Is acquired ?</td>	       
 	       <td tal:repeat="role roles" 
 	           tal:content="python: (state.role_has_permission(role, permission) and 'X') or ''">
 	           Has role ?
