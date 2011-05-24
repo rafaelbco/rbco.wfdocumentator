@@ -6,6 +6,7 @@ History
 
 - Implemented i18n.
 - Added z3c.autoinclude.plugin entry point.
+- Now @@wf-doc uses main_template.
 
 
 0.0.3 (22-november-2009)
