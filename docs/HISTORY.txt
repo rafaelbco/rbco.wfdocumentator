@@ -4,14 +4,14 @@ History
 0.0.4 (unreleased)
 ~~~~~~~~~~~~~~~~~~
 
-- Nothing changed yet.
+- Implemented i18n.
+- Added z3c.autoinclude.plugin entry point.
 
 
 0.0.3 (22-november-2009)
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-- Corrected packaging error: README.txt was not included in the released 
-  tarball :-(.
+- Corrected packaging error: README.txt was not included in the released tarball :-(.
 
 0.0.2 (22-november-2009)
 ~~~~~~~~~~~~~~~~~~~~~~~~

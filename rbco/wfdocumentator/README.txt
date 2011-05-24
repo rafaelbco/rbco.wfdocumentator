@@ -66,8 +66,6 @@ To-do
 
 - Make the location of the ``dot`` executable configurable.
 
-- i18n.
-
 - Write automatic tests.
 
 Credits
