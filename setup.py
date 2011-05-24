@@ -7,7 +7,7 @@ version = '0.0.4dev'
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
 
-long_description = read('rbco', 'wfdocumentator', 'README.txt')    
+long_description = read('rbco', 'wfdocumentator', 'README.txt') + '\n\n' + read('docs', 'HISTORY.txt')
 
 setup(name='rbco.wfdocumentator',
       version=version,
