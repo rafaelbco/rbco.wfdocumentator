@@ -35,6 +35,13 @@ setup(name='rbco.wfdocumentator',
           'rbco.commandwrap<=0.0.99',
           'prdg.util<=0.0.99',
       ],
+      
+      
+      extras_require = {
+        'test': [
+        ]
+      },      
+      
       entry_points="""      
       [z3c.autoinclude.plugin]
       target = plone
