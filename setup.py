@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import os
 import os.path
 
-version = '0.0.4'
+version = '0.0.5dev'
 
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
