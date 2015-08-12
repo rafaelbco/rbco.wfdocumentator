@@ -5,6 +5,7 @@ History
 ~~~~~~~~~~~~~~~~~~
 
 - Plone 4.3.x compatibility.
+- Workflow validation (``@@wf-validate`` view and correspondent function).
 
 
 0.0.4 (2011-06-13)

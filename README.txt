@@ -21,6 +21,8 @@ Currently two Zope3-style views for
 - ``@@wf-doc-user-friendly``: Same as ``@@wf-doc`` but hides some roles and permissions and the
   "acquire" column.
 
+- ``@@wf-validate``: Validate the workflow according to a set of general rules.
+
 Requirements
 ------------
 
@@ -78,7 +80,8 @@ Credits
 - Author: Rafael Oliveira <rafaelbco@gmail.com>
 
 - The idea of using Zope3-style views to render information about workflow
-  definitions was inspired by Martin Aspeli's `collective.wtf`_.
+  definitions and to do sanity check on workflows was inspired by Martin Aspeli's
+  `collective.wtf`_.
 
 Contribute and report bugs
 --------------------------
