@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 import os
 import os.path
 
-version = '0.0.5dev'
+version = '0.0.5.dev0'
 
 
 def read(*rnames):
@@ -21,10 +21,11 @@ setup(
     # http://www.python.org/pypi?%3Aaction=list_classifiers
     classifiers=[
         'Framework :: Plone',
+        'Programming Language :: Python :: 2.7',
         'Programming Language :: Python',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
-    keywords='',
+    keywords='plone workflow',
     author='Rafael Oliveira',
     author_email='rafaelbco@gmail.com',
     url='https://github.com/rafaelbco/rbco.wfdocumentator',
