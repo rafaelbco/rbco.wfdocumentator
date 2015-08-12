@@ -4,7 +4,7 @@ History
 0.0.5 (unreleased)
 ~~~~~~~~~~~~~~~~~~
 
-- Nothing changed yet.
+- Plone 4.3.x compatibility.
 
 
 0.0.4 (2011-06-13)

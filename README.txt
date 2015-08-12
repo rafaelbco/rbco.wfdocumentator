@@ -14,23 +14,22 @@ Currently two Zope3-style views for
 
 - ``@@wf-graph``: Render an image representing the workflow's states and
   transitions as a graph.
-  
+
 - ``@@wf-doc``: Render an HTML page describing the workflow. This includes
-  the graph mentioned above.  
-  
+  the graph mentioned above.
+
 - ``@@wf-doc-user-friendly``: Same as ``@@wf-doc`` but hides some roles and permissions and the
   "acquire" column.
 
 Requirements
 ------------
 
-- Tested with Zope 2.10.7 + Plone 3.2.2. However only Zope 2 is required
-  (hopefuly).
+- Tested with Plone 4.3.x. However only Zope 2 is required (hopefuly).
 
-- Graphviz_. More precisely: there must be an executable called ``dot`` in the 
+- Graphviz_. More precisely: there must be an executable called ``dot`` in the
   system path and the user running Zope must have execute permission on it.
-  
-- Other requirements are pure Python packages registered on PyPI and distutils 
+
+- Other requirements are pure Python packages registered on PyPI and distutils
   should handle them without problems.
 
 .. WARNING::
@@ -66,7 +65,7 @@ To-do
 
 - Render an HTML image map, so the user can click on a state or transition
   and see its description.
-  
+
 - Test and adapt for Windows.
 
 - Make the location of the ``dot`` executable configurable.
@@ -78,7 +77,7 @@ Credits
 
 - Author: Rafael Oliveira <rafaelbco@gmail.com>
 
-- The idea of using Zope3-style views to render information about workflow 
+- The idea of using Zope3-style views to render information about workflow
   definitions was inspired by Martin Aspeli's `collective.wtf`_.
 
 Contribute and report bugs
