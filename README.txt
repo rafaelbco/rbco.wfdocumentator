@@ -9,7 +9,7 @@ Overview
 This add-on for Zope and Plone aims to provide user-friendly automatically
 generated documentation about workflow definitions.
 
-Currently two Zope3-style views for
+Currently the following Zope3-style views for
 ``Products.DCWorkflow.interfaces.IDCWorkflowDefinition`` are provided:
 
 - ``@@wf-graph``: Render an image representing the workflow's states and
@@ -98,7 +98,7 @@ Thanks
 
 .. _Graphviz: http://www.graphviz.org/
 .. _collective.wtf: http://pypi.python.org/pypi/collective.wtf/
-.. _`Issue tracker`: http://code.google.com/p/rbco-wfdocumentator/issues
+.. _`Issue tracker`: https://github.com/rafaelbco/rbco.wfdocumentator/issues
 .. _`Installing an Add-on Product`: http://plone.org/documentation/tutorial/third-party-products/installing
 
 
